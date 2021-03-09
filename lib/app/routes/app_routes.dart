@@ -3,8 +3,10 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   static const HOME = _Paths.HOME;
+  static const SPALSH_SCREEN = _Paths.SPALSH_SCREEN;
 }
 
 abstract class _Paths {
   static const HOME = '/home';
+  static const SPALSH_SCREEN = '/spalsh-screen';
 }
