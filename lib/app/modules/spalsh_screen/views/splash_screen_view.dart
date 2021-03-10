@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:wave/app/theme/color_theme.dart';
+//import 'package:wave/app/theme/color_theme.dart';
 import 'package:wave/app/theme/text_theme.dart';
 
 import '../controllers/splash_screen_controller.dart';
