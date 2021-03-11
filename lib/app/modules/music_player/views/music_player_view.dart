@@ -10,8 +10,6 @@ import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:wave/app/theme/text_theme.dart';
 
-import '../controllers/music_player_controller.dart';
-
 // class MusicPlayerView extends GetView<MusicPlayerController> {
 //   @override
 //   Widget build(BuildContext context) {

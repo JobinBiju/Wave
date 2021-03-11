@@ -7,8 +7,6 @@ import 'package:get/get.dart';
 import 'package:wave/app/modules/music_player/views/music_player_view.dart';
 import 'package:wave/app/theme/text_theme.dart';
 
-import '../controllers/home_controller.dart';
-
 // class HomeView extends GetView<HomeController> {
 //   @override
 //   Widget build(BuildContext context) {
