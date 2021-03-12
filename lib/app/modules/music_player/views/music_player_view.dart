@@ -41,11 +41,24 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
   double minimumValue = 0.0, maximumValue = 0.0, currentValue = 0.0;
   String currentTime = '', endTime = '';
   bool isPlaying = false;
+  bool isFav = false;
+  String shuffleState, repeatState;
+  List<String> shuffle = [
+    'assets/shuffleOff.png',
+    'assets/shuffleOn.png',
+  ];
+  List<String> repeat = [
+    'assets/repeatOff.png',
+    'assets/repeatOn.png',
+    'assets/repeatOnOne.png'
+  ];
   final AudioPlayer player = AudioPlayer();
 
   void initState() {
     super.initState();
     setSong(widget.songInfo);
+    shuffleState = shuffle.first;
+    repeatState = repeat.first;
   }
 
   void dispose() {
@@ -115,11 +128,13 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
           children: [
             Text(
               'Playing from',
-              style: kPlayingFromTextStyle,
+              style: kPlayingFromTextStyle.copyWith(
+                  color: Theme.of(context).primaryColorDark),
             ),
             Text(
               widget.songInfo.album.toString().toUpperCase(),
-              style: kAlbumTitleTextStyle,
+              style: kAlbumTitleTextStyle.copyWith(
+                  color: Theme.of(context).primaryColorDark),
             ),
           ],
         ),
@@ -160,19 +175,43 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                      icon: Icon(FontAwesomeIcons.heart,
-                          color: Theme.of(context).primaryColor),
-                      onPressed: () {}),
+                      icon: Icon(
+                        isFav
+                            ? FontAwesomeIcons.solidHeart
+                            : FontAwesomeIcons.heart,
+                        color: Theme.of(context).primaryColor,
+                        size: 25,
+                      ),
+                      onPressed: () {
+                        isFav = !isFav;
+                        setState(() {});
+                      }),
                   Row(
                     children: [
                       IconButton(
-                          icon: Icon(FontAwesomeIcons.heart,
-                              color: Theme.of(context).primaryColorLight),
-                          onPressed: () {}),
+                          icon:
+                              Image(image: AssetImage(repeatState), width: 20),
+                          onPressed: () {
+                            if (repeatState == repeat.first) {
+                              repeatState = repeat.elementAt(1);
+                            } else if (repeatState == repeat.elementAt(1)) {
+                              repeatState = repeat.last;
+                            } else if (repeatState == repeat.last) {
+                              repeatState = repeat.first;
+                            }
+                            setState(() {});
+                          }),
                       IconButton(
-                          icon: Icon(FontAwesomeIcons.heart,
-                              color: Theme.of(context).primaryColorLight),
-                          onPressed: () {}),
+                          icon:
+                              Image(image: AssetImage(shuffleState), width: 20),
+                          onPressed: () {
+                            if (shuffleState == shuffle.first) {
+                              shuffleState = shuffle.last;
+                            } else {
+                              shuffleState = shuffle.first;
+                            }
+                            setState(() {});
+                          }),
                     ],
                   ),
                 ],
@@ -187,8 +226,12 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(widget.songInfo.title,
-                      style: kSongTitleTextStyle, maxLines: 1),
-                  Text(widget.songInfo.artist, style: kSongArtistTextStyle),
+                      style: kSongTitleTextStyle.copyWith(
+                          color: Theme.of(context).primaryColorDark),
+                      maxLines: 1),
+                  Text(widget.songInfo.artist,
+                      style: kSongArtistTextStyle.copyWith(
+                          color: Theme.of(context).primaryColorDark)),
                   SizedBox(height: 8),
                 ],
               ),
@@ -212,8 +255,12 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(currentTime, style: kSongArtistTextStyle),
-                  Text(endTime, style: kSongArtistTextStyle),
+                  Text(currentTime,
+                      style: kSongArtistTextStyle.copyWith(
+                          color: Theme.of(context).primaryColorDark)),
+                  Text(endTime,
+                      style: kSongArtistTextStyle.copyWith(
+                          color: Theme.of(context).primaryColorDark)),
                 ],
               ),
             ),
@@ -227,11 +274,11 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
                   children: [
                     Neumorphic(
                       style: NeumorphicStyle(
-                        shape: NeumorphicShape.flat,
+                        shape: NeumorphicShape.concave,
                         boxShape: NeumorphicBoxShape.circle(),
                         depth: 20,
                         lightSource: LightSource.topLeft,
-                        shadowLightColor: Colors.white38,
+                        shadowLightColor: Colors.white30,
                         shadowDarkColor: Colors.black87,
                         color: Theme.of(context).scaffoldBackgroundColor,
                       ),
@@ -250,11 +297,12 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
                     ),
                     Neumorphic(
                       style: NeumorphicStyle(
-                        shape: NeumorphicShape.flat,
+                        shape: NeumorphicShape.concave,
                         boxShape: NeumorphicBoxShape.circle(),
                         depth: 20,
                         lightSource: LightSource.topLeft,
-                        shadowLightColor: Colors.white38,
+                        shadowLightColor: Colors.white30,
+                        shadowDarkColorEmboss: Colors.amber,
                         shadowDarkColor: Colors.black87,
                         color: Theme.of(context).scaffoldBackgroundColor,
                       ),
@@ -276,11 +324,11 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
                     ),
                     Neumorphic(
                       style: NeumorphicStyle(
-                        shape: NeumorphicShape.flat,
+                        shape: NeumorphicShape.concave,
                         boxShape: NeumorphicBoxShape.circle(),
                         depth: 20,
                         lightSource: LightSource.topLeft,
-                        shadowLightColor: Colors.white38,
+                        shadowLightColor: Colors.white30,
                         shadowDarkColor: Colors.black87,
                         color: Theme.of(context).scaffoldBackgroundColor,
                       ),

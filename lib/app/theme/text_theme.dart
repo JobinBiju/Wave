@@ -12,16 +12,14 @@ var kHeadTextStyle = GoogleFonts.lato(
 var kPlayingFromTextStyle = GoogleFonts.openSans(
   textStyle: TextStyle(
     fontSize: 10,
-    //fontWeight: FontWeight.w700,
-    height: 1.2,
-    color: secondaryDBlue,
+    height: 1.4,
   ),
 );
 var kAlbumTitleTextStyle = GoogleFonts.openSans(
   textStyle: TextStyle(
     fontSize: 10,
-    //fontWeight: FontWeight.w700,
-    height: 1.2,
+    fontWeight: FontWeight.w600,
+    height: 1.4,
     color: white1,
   ),
 );
@@ -30,7 +28,6 @@ var kSongTitleTextStyle = GoogleFonts.openSans(
     fontSize: 24,
     //fontWeight: FontWeight.w700,
     height: 1.2,
-    color: white1,
   ),
 );
 var kSongArtistTextStyle = GoogleFonts.openSans(
@@ -38,7 +35,6 @@ var kSongArtistTextStyle = GoogleFonts.openSans(
     fontSize: 14,
     //fontWeight: FontWeight.w700,
     height: 1.2,
-    color: secondaryDBlue,
   ),
 );
 

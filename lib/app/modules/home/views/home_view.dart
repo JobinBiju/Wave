@@ -59,23 +59,35 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: Icon(Icons.music_note, color: Colors.white),
-        title: Text('All Songs', style: TextStyle(color: Colors.white)),
+        leading:
+            Icon(Icons.music_note, color: Theme.of(context).primaryColorDark),
+        title: Text('All Songs',
+            style: TextStyle(color: Theme.of(context).primaryColorDark)),
       ),
       body: ListView.separated(
-        separatorBuilder: (context, index) => Divider(),
+        separatorBuilder: (context, index) => SizedBox(height: 1),
         itemCount: songs.length,
         itemBuilder: (context, index) => Container(
+          margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Theme.of(context).primaryColorDark.withOpacity(0.07),
+          ),
           child: ListTile(
             leading: CircleAvatar(
+              radius: 22,
               backgroundImage: songs[index].albumArtwork == null
                   ? AssetImage('assets/noAlbum.jpg')
                   : FileImage(File(songs[index].albumArtwork)),
             ),
             title: Text(songs[index].title,
-                style: kSongArtistTextStyle.copyWith(color: Colors.white)),
+                style: kSongArtistTextStyle.copyWith(
+                    color: Theme.of(context).primaryColorDark),
+                maxLines: 1),
             subtitle: Text(songs[index].artist,
-                style: kSongArtistTextStyle.copyWith(color: Colors.white)),
+                style: kSongArtistTextStyle.copyWith(
+                    color: Theme.of(context).primaryColorDark),
+                maxLines: 1),
             onTap: () {
               currentIndex = index;
               Navigator.of(context).push(

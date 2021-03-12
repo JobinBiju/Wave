@@ -7,7 +7,7 @@ class SplashScreenController extends GetxController {
   void onInit() {
     super.onInit();
     Timer(
-      Duration(milliseconds: 4000),
+      Duration(milliseconds: 3000),
       () => Get.offNamed('/home'),
     );
   }
