@@ -148,7 +148,7 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
                 width: 170,
                 child: Image(
                   image: widget.songInfo.albumArtwork == null
-                      ? AssetImage('assets/music_gradient.jpg')
+                      ? AssetImage('assets/noAlbum.jpg')
                       : FileImage(File(widget.songInfo.albumArtwork)),
                   fit: BoxFit.cover,
                 ),

@@ -53,6 +53,7 @@ class _HomeViewState extends State<HomeView> {
     key.currentState.setSong(songs[currentIndex]);
   }
 
+  @override
   Widget build(context) {
     return Scaffold(
       appBar: AppBar(
@@ -64,24 +65,30 @@ class _HomeViewState extends State<HomeView> {
       body: ListView.separated(
         separatorBuilder: (context, index) => Divider(),
         itemCount: songs.length,
-        itemBuilder: (context, index) => ListTile(
-          leading: CircleAvatar(
-            backgroundImage: songs[index].albumArtwork == null
-                ? AssetImage('assets/music_gradient.jpg')
-                : FileImage(File(songs[index].albumArtwork)),
-          ),
-          title: Text(songs[index].title,
-              style: kSongArtistTextStyle.copyWith(color: Colors.white)),
-          subtitle: Text(songs[index].artist,
-              style: kSongArtistTextStyle.copyWith(color: Colors.white)),
-          onTap: () {
-            currentIndex = index;
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => MusicPlayerView(
+        itemBuilder: (context, index) => Container(
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundImage: songs[index].albumArtwork == null
+                  ? AssetImage('assets/noAlbum.jpg')
+                  : FileImage(File(songs[index].albumArtwork)),
+            ),
+            title: Text(songs[index].title,
+                style: kSongArtistTextStyle.copyWith(color: Colors.white)),
+            subtitle: Text(songs[index].artist,
+                style: kSongArtistTextStyle.copyWith(color: Colors.white)),
+            onTap: () {
+              currentIndex = index;
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => MusicPlayerView(
                     changeTrack: changeTrack,
                     songInfo: songs[currentIndex],
-                    key: key)));
-          },
+                    key: key,
+                  ),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

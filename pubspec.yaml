@@ -24,8 +24,6 @@ dependencies:
   get: 3.26.0
   flutter:
     sdk: flutter
-
-
   font_awesome_flutter: ^8.11.0
   google_fonts: ^1.1.1
   flutter_svg: ^0.19.1
