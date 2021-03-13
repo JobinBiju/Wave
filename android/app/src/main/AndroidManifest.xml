@@ -1,5 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.geekflow.wave">
+   
+   
+   <!-- Permissions options for the 'storage' group-->
+   <uses-permission android:name="android.permission.INTERNET"/>
+   <uses-permission android:name="com.android.vending.BILLING" />
+   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
    <application
         android:label="Wave"
         android:icon="@mipmap/ic_launcher"
