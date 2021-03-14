@@ -1,20 +1,15 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wave/app/modules/permissions_service.dart';
 
 class SplashScreenController extends GetxController {
-  askPermission() {
-    PermissionsService().requestStoragePermission(
-      onPermissionDenied: () {
-        print('Permission has been denied');
-      },
-    );
-  }
-
+  Permissions perm = Permissions();
   @override
   void onInit() {
     super.onInit();
+    perm.getPermission();
     Timer(
       Duration(milliseconds: 3000),
       () => Get.offNamed('/home'),
@@ -24,7 +19,6 @@ class SplashScreenController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    askPermission();
   }
 
   @override

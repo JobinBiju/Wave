@@ -35,9 +35,7 @@ class _HomeViewState extends State<HomeView> {
 
   void getTracks() async {
     songs = await audioQuery.getSongs();
-    setState(() {
-      songs = songs;
-    });
+    setState(() {});
   }
 
   void changeTrack(bool isNext) {

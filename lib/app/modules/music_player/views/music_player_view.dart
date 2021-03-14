@@ -58,7 +58,9 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
     super.initState();
     setSong(widget.songInfo);
     shuffleState = shuffle.first;
+    player.setShuffleModeEnabled(false);
     repeatState = repeat.first;
+    player.setLoopMode(LoopMode.off);
   }
 
   void dispose() {
@@ -120,7 +122,7 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
             ),
             color: Theme.of(context).primaryColor,
             onPressed: () {
-              Navigator.of(context).pop();
+              Get.back();
             },
           ),
         ),
@@ -194,10 +196,13 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
                           onPressed: () {
                             if (repeatState == repeat.first) {
                               repeatState = repeat.elementAt(1);
+                              player.setLoopMode(LoopMode.all);
                             } else if (repeatState == repeat.elementAt(1)) {
                               repeatState = repeat.last;
+                              player.setLoopMode(LoopMode.one);
                             } else if (repeatState == repeat.last) {
                               repeatState = repeat.first;
+                              player.setLoopMode(LoopMode.off);
                             }
                             setState(() {});
                           }),
@@ -207,8 +212,10 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
                           onPressed: () {
                             if (shuffleState == shuffle.first) {
                               shuffleState = shuffle.last;
+                              player.setShuffleModeEnabled(true);
                             } else {
                               shuffleState = shuffle.first;
+                              player.setShuffleModeEnabled(false);
                             }
                             setState(() {});
                           }),
@@ -246,7 +253,7 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
                 value: currentValue,
                 onChanged: (value) {
                   currentValue = value;
-                  player.seek(Duration(milliseconds: currentValue.round()));
+                  player.seek(Duration(milliseconds: currentValue.floor()));
                 },
               ),
             ),

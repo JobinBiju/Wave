@@ -1,31 +1,15 @@
-import 'package:permission_handler/permission_handler.dart';
+import 'dart:async';
 
-class PermissionsService {
-  final PermissionHandler permissionHandler = PermissionHandler();
+import 'package:get/get.dart';
+import 'package:permissions_plugin/permissions_plugin.dart';
 
-  Future<bool> _requestPermission(PermissionGroup permission) async {
-    var result = await permissionHandler.requestPermissions([permission]);
-    if (result[permission] == PermissionStatus.granted) {
-      return true;
-    }
-    return false;
-  }
-
-  Future<bool> requestStoragePermission({Function onPermissionDenied}) async {
-    var granted = await _requestPermission(PermissionGroup.storage);
-    if (!granted) {
-      onPermissionDenied();
-    }
-    return granted;
-  }
-
-  Future<bool> hasContactsPermission() async {
-    return hasPermission(PermissionGroup.storage);
-  }
-
-  Future<bool> hasPermission(PermissionGroup permission) async {
-    var permissionStatus =
-        await permissionHandler.checkPermissionStatus(permission);
-    return permissionStatus == PermissionStatus.granted;
+class Permissions {
+  Future<void> getPermission() async {
+    Map<Permission, PermissionState> permission =
+        await PermissionsPlugin.requestPermissions([
+      Permission.ACCESS_FINE_LOCATION,
+      Permission.READ_EXTERNAL_STORAGE,
+      Permission.WRITE_EXTERNAL_STORAGE
+    ]);
   }
 }
