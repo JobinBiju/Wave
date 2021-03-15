@@ -28,8 +28,8 @@ import 'package:wave/app/theme/text_theme.dart';
 //   }
 // }
 class MusicPlayerView extends StatefulWidget {
-  SongInfo songInfo;
-  Function changeTrack;
+  final SongInfo songInfo;
+  final Function changeTrack;
   final GlobalKey<MusicPlayerViewState> key;
   MusicPlayerView({this.songInfo, this.changeTrack, this.key})
       : super(key: key);
@@ -69,7 +69,7 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
   }
 
   void setSong(SongInfo songInfo) async {
-    widget.songInfo = songInfo;
+    //widget.songInfo = songInfo;
     await player.setUrl(widget.songInfo.uri);
     currentValue = minimumValue;
     maximumValue = player.duration.inMilliseconds.toDouble();
@@ -250,10 +250,11 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
                 activeColor: Theme.of(context).primaryColor,
                 min: minimumValue,
                 max: maximumValue,
-                value: currentValue,
+                value:
+                    currentValue < maximumValue ? currentValue : maximumValue,
                 onChanged: (value) {
                   currentValue = value;
-                  player.seek(Duration(milliseconds: currentValue.floor()));
+                  player.seek(Duration(milliseconds: currentValue.round()));
                 },
               ),
             ),
