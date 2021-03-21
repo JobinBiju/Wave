@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_audio_query/flutter_audio_query.dart';
 
 import 'package:get/get.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:wave/app/modules/music_player/views/music_player_view.dart';
 import 'package:wave/app/theme/text_theme.dart';
 
@@ -27,7 +28,8 @@ class _HomeViewState extends State<HomeView> {
   final FlutterAudioQuery audioQuery = FlutterAudioQuery();
   List<SongInfo> songs = [];
   int currentIndex = 0;
-  final GlobalKey<MusicPlayerViewState> key = GlobalKey<MusicPlayerViewState>();
+  final AudioPlayer player = AudioPlayer();
+  GlobalKey<MusicPlayerViewState> key = GlobalKey<MusicPlayerViewState>();
   void initState() {
     super.initState();
     getTracks();
