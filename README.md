@@ -18,6 +18,6 @@ samples, guidance on mobile development, and a full API reference.
 ## UI Screenshots
 
 <div style="display: flex; justify-content: space-around">
-<img align="left" alt="songList" src="https://raw.githubusercontent.com/JobinBiju/Wave/main/screenshots/songList.jpg?token=AKLSUL75CQMUF2EZDHXRQSTAMKK3M" width="200px" />  
-<img align="left" alt="songPlayer" src="https://raw.githubusercontent.com/JobinBiju/Wave/main/screenshots/songPlayer.jpg?token=AKLSUL56DTUADW35IK6C3ZTAMKK5K" width="200px" />
+<img align="left" alt="songList" src="https://raw.githubusercontent.com/JobinBiju/Wave/main/screenshots/songList.jpg?token=AKLSUL75CQMUF2EZDHXRQSTAMKK3M" width="250px" />  
+<img align="left" alt="songPlayer" src="https://raw.githubusercontent.com/JobinBiju/Wave/main/screenshots/songPlayer.jpg?token=AKLSUL56DTUADW35IK6C3ZTAMKK5K" width="250px" />
 </div>
