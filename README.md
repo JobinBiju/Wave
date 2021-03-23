@@ -18,6 +18,6 @@ samples, guidance on mobile development, and a full API reference.
 ## UI Screenshots
 
 <div style="display: flex; justify-content: space-around">
-<img align="left" alt="Flutter" src="https://raw.githubusercontent.com/JobinBiju/Wave/master/screenshots/songList.jpg" width="200px" />  
-<img align="left" alt="Arduino" src="https://raw.githubusercontent.com/JobinBiju/Wave/master/screenshots/songPlayer.jpg" width="200px" />
+<img align="left" alt="songList" src="https://raw.githubusercontent.com/JobinBiju/Wave/main/screenshots/songList.jpg" width="200px" />  
+<img align="left" alt="songPlayer" src="https://raw.githubusercontent.com/JobinBiju/Wave/main/screenshots/songPlayer.jpg" width="200px" />
 </div>
