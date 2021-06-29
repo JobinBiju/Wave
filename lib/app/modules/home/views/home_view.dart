@@ -1,11 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_audio_query/flutter_audio_query.dart';
 
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:wave/app/modules/music_player/views/music_player_view.dart';
+import 'package:wave/app/modules/home/views/music_player_view.dart';
 import 'package:wave/app/theme/text_theme.dart';
 
 // class HomeView extends GetView<HomeController> {
@@ -25,33 +24,33 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final FlutterAudioQuery audioQuery = FlutterAudioQuery();
-  List<SongInfo> songs = [];
+  // final FlutterAudioQuery audioQuery = FlutterAudioQuery();
+  // List<SongInfo> songs = [];
   int currentIndex = 0;
   final AudioPlayer player = AudioPlayer();
   GlobalKey<MusicPlayerViewState> key = GlobalKey<MusicPlayerViewState>();
   void initState() {
     super.initState();
-    getTracks();
+    // getTracks();
   }
 
-  void getTracks() async {
-    songs = await audioQuery.getSongs();
-    setState(() {});
-  }
+  // void getTracks() async {
+  //   songs = await audioQuery.getSongs();
+  //   setState(() {});
+  // }
 
-  void changeTrack(bool isNext) {
-    if (isNext) {
-      if (currentIndex != songs.length - 1) {
-        currentIndex++;
-      }
-    } else {
-      if (currentIndex != 0) {
-        currentIndex--;
-      }
-    }
-    key.currentState.setSong(songs[currentIndex]);
-  }
+  // void changeTrack(bool isNext) {
+  //   if (isNext) {
+  //     if (currentIndex != songs.length - 1) {
+  //       currentIndex++;
+  //     }
+  //   } else {
+  //     if (currentIndex != 0) {
+  //       currentIndex--;
+  //     }
+  //   }
+  //   key.currentState.setSong(songs[currentIndex]);
+  // }
 
   @override
   Widget build(context) {
@@ -64,45 +63,45 @@ class _HomeViewState extends State<HomeView> {
         title: Text('All Songs',
             style: TextStyle(color: Theme.of(context).primaryColorDark)),
       ),
-      body: ListView.separated(
-        separatorBuilder: (context, index) => SizedBox(height: 1),
-        itemCount: songs.length,
-        itemBuilder: (context, index) => Container(
-          margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Theme.of(context).primaryColorDark.withOpacity(0.07),
-          ),
-          child: ListTile(
-            leading: CircleAvatar(
-              radius: 22,
-              backgroundImage: songs[index].albumArtwork == null
-                  ? AssetImage('assets/noAlbum.jpg')
-                  : FileImage(File(songs[index].albumArtwork)),
-            ),
-            title: Text(songs[index].title,
-                style: kSongArtistTextStyle.copyWith(
-                    color: Theme.of(context).primaryColorDark),
-                maxLines: 1),
-            subtitle: Text(songs[index].artist,
-                style: kSongArtistTextStyle.copyWith(
-                    color: Theme.of(context).primaryColorDark),
-                maxLines: 1),
-            onTap: () {
-              currentIndex = index;
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => MusicPlayerView(
-                    changeTrack: changeTrack,
-                    songInfo: songs[currentIndex],
-                    key: key,
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
-      ),
+      // body: ListView.separated(
+      //   separatorBuilder: (context, index) => SizedBox(height: 1),
+      //   itemCount: songs.length,
+      //   itemBuilder: (context, index) => Container(
+      //     margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      //     decoration: BoxDecoration(
+      //       borderRadius: BorderRadius.circular(10),
+      //       color: Theme.of(context).primaryColorDark.withOpacity(0.07),
+      //     ),
+      //     child: ListTile(
+      //       leading: CircleAvatar(
+      //         radius: 22,
+      //         backgroundImage: songs[index].albumArtwork == null
+      //   //          ? AssetImage('assets/noAlbum.jpg')
+      //             : FileImage(File(songs[index].albumArtwork)),
+      //       ),
+      //       title: Text(songs[index].title,
+      //           style: kSongArtistTextStyle.copyWith(
+      //               color: Theme.of(context).primaryColorDark),
+      //           maxLines: 1),
+      //       subtitle: Text(songs[index].artist,
+      //           style: kSongArtistTextStyle.copyWith(
+      //               color: Theme.of(context).primaryColorDark),
+      //           maxLines: 1),
+      //       onTap: () {
+      //         currentIndex = index;
+      //         Navigator.of(context).push(
+      //           MaterialPageRoute(
+      //             builder: (context) => MusicPlayerView(
+      //               changeTrack: changeTrack,
+      //               songInfo: songs[currentIndex],
+      //               key: key,
+      //             ),
+      //           ),
+      //         );
+      //       },
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

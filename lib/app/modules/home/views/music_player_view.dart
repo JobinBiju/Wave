@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_audio_query/flutter_audio_query.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -28,11 +27,11 @@ import 'package:wave/app/theme/text_theme.dart';
 //   }
 // }
 class MusicPlayerView extends StatefulWidget {
-  SongInfo songInfo;
+  // SongInfo songInfo;
   Function changeTrack;
   GlobalKey<MusicPlayerViewState> key;
-  MusicPlayerView({this.songInfo, this.changeTrack, this.key})
-      : super(key: key);
+  // MusicPlayerView({this.songInfo, this.changeTrack, this.key})
+  //     : super(key: key);
   @override
   MusicPlayerViewState createState() => MusicPlayerViewState();
 }
@@ -56,7 +55,7 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
 
   void initState() {
     super.initState();
-    setSong(widget.songInfo);
+    // setSong(widget.songInfo);
     shuffleState = shuffle.first;
     player.setShuffleModeEnabled(false);
     repeatState = repeat.first;
@@ -68,35 +67,35 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
     player?.dispose();
   }
 
-  void setSong(SongInfo songInfo) async {
-    //widget.songInfo = songInfo;
-    await player.setUrl(widget.songInfo.uri);
-    currentValue = minimumValue;
-    maximumValue = player.duration.inMilliseconds.toDouble();
-    setState(() {
-      currentTime = getDuration(currentValue);
-      endTime = getDuration(maximumValue);
-    });
-    isPlaying = false;
-    changeStatus();
-    player.positionStream.listen((duration) {
-      currentValue = duration.inMilliseconds.toDouble();
-      setState(() {
-        currentTime = getDuration(currentValue);
-      });
-    });
-  }
+  // void setSong(SongInfo songInfo) async {
+  //   //widget.songInfo = songInfo;
+  //   await player.setUrl(widget.songInfo.uri);
+  //   currentValue = minimumValue;
+  //   maximumValue = player.duration.inMilliseconds.toDouble();
+  //   setState(() {
+  //     currentTime = getDuration(currentValue);
+  //     endTime = getDuration(maximumValue);
+  //   });
+  //   isPlaying = false;
+  //   changeStatus();
+  //   player.positionStream.listen((duration) {
+  //     currentValue = duration.inMilliseconds.toDouble();
+  //     setState(() {
+  //       currentTime = getDuration(currentValue);
+  //     });
+  //   });
+  // }
 
-  void changeStatus() {
-    setState(() {
-      isPlaying = !isPlaying;
-    });
-    if (isPlaying) {
-      player.play();
-    } else {
-      player.pause();
-    }
-  }
+  // void changeStatus() {
+  //   setState(() {
+  //     isPlaying = !isPlaying;
+  //   });
+  //   if (isPlaying) {
+  //     player.play();
+  //   } else {
+  //     player.pause();
+  //   }
+  // }
 
   String getDuration(double value) {
     Duration duration = Duration(milliseconds: value.round());
@@ -133,11 +132,11 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
               style: kPlayingFromTextStyle.copyWith(
                   color: Theme.of(context).primaryColorDark),
             ),
-            Text(
-              widget.songInfo.album.toString().toUpperCase(),
-              style: kAlbumTitleTextStyle.copyWith(
-                  color: Theme.of(context).primaryColorDark),
-            ),
+            // Text(
+            //   widget.songInfo.album.toString().toUpperCase(),
+            //   style: kAlbumTitleTextStyle.copyWith(
+            //       color: Theme.of(context).primaryColorDark),
+            // ),
           ],
         ),
         actions: [
@@ -163,12 +162,12 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
               child: Container(
                 height: 170,
                 width: 170,
-                child: Image(
-                  image: widget.songInfo.albumArtwork == null
-                      ? AssetImage('assets/noAlbum.jpg')
-                      : FileImage(File(widget.songInfo.albumArtwork)),
-                  fit: BoxFit.cover,
-                ),
+                // child: Image(
+                //   image: widget.songInfo.albumArtwork == null
+                //       ? AssetImage('assets/noAlbum.jpg')
+                //       : FileImage(File(widget.songInfo.albumArtwork)),
+                //   fit: BoxFit.cover,
+                // ),
               ),
             ),
             Padding(
@@ -232,14 +231,14 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(widget.songInfo.title,
-                      style: kSongTitleTextStyle.copyWith(
-                          color: Theme.of(context).primaryColorDark),
-                      maxLines: 1),
-                  Text(widget.songInfo.artist,
-                      style: kSongArtistTextStyle.copyWith(
-                          color: Theme.of(context).primaryColorDark)),
-                  SizedBox(height: 8),
+                  // Text(widget.songInfo.title,
+                  //     style: kSongTitleTextStyle.copyWith(
+                  //         color: Theme.of(context).primaryColorDark),
+                  //     maxLines: 1),
+                  // Text(widget.songInfo.artist,
+                  //     style: kSongArtistTextStyle.copyWith(
+                  //         color: Theme.of(context).primaryColorDark)),
+                  // SizedBox(height: 8),
                 ],
               ),
             ),
@@ -324,7 +323,7 @@ class MusicPlayerViewState extends State<MusicPlayerView> {
                             size: 30,
                           ),
                           onPressed: () {
-                            changeStatus();
+                            // changeStatus();
                           },
                         ),
                       ),
