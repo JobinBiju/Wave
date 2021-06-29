@@ -1,6 +1,10 @@
-# Wave
+<p align="center">
+<img src="assets/readmeFiles/Wave.png" width=700>
+</p>
 
-A local music player application made using flutter.
+### A local music player app made using flutter.
+
+<br>
 
 ## Getting Started
 
@@ -21,5 +25,5 @@ samples, guidance on mobile development, and a full API reference.
 
 ## UI & Functions till now.
 
-| <img align="left" alt="songList" src="screenshots/songList.jpg" width="250px" /> | <img align="left" alt="songPlayer" src="screenshots/songPlayer.jpg" width="250px" /> |
-| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| <img align="left" alt="songList" src="assets/readmeFiles/screenshots/songList.jpg" width="250px" /> | <img align="left" alt="songPlayer" src="assets/readmeFiles/screenshots/songPlayer.jpg" width="250px" /> |
+| --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
